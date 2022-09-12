@@ -1,4 +1,5 @@
 use std::fmt;
+use rocket::futures::StreamExt;
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
 use rand::thread_rng;
@@ -50,11 +51,9 @@ pub struct Pack {
 impl Pack {
     pub fn new() -> Self {
         let mut pack = Pack { cards: Vec::new() };
-        for suit in Suit::iter() {
-            for rank in Rank::iter() {
-                pack.cards.push(Card { rank, suit });
-            }
-        }
+        Suit::iter().for_each(|suit|  {
+            Rank::iter().for_each(|rank| {pack.cards.push(Card{rank, suit})});
+        });
         pack
     }
     pub fn print(&self) -> String {
