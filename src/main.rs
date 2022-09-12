@@ -10,7 +10,7 @@ use rand::seq::SliceRandom;
 fn index() -> String {
     let mut pack = Pack::new();
 //    dbg!(&pack);
-    pack.cards.shuffle(&mut thread_rng());
+    pack.shuffle();
     pack.print()
 }
 

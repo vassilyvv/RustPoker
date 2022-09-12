@@ -62,4 +62,7 @@ impl Pack {
             line + string.as_str()
         })
     }
+    pub fn shuffle(&mut self) {
+        self.cards.shuffle(&mut thread_rng());
+    }
 }
