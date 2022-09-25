@@ -1,5 +1,4 @@
 use std::fmt;
-use rocket::futures::StreamExt;
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
 use rand::thread_rng;
@@ -7,7 +6,7 @@ use rand::seq::SliceRandom;
 
 
 #[derive(Debug, EnumIter, Clone, Copy)]
-enum Suit {
+pub enum Suit {
     Spades,
     Clubs,
     Hearts,
@@ -15,7 +14,7 @@ enum Suit {
 }
 
 #[derive(Debug, EnumIter, Clone, Copy)]
-enum Rank {
+pub enum Rank {
     Ace,
     Two,
     Three,
@@ -33,8 +32,8 @@ enum Rank {
 
 #[derive(Debug, Clone, Copy)]
 pub struct Card {
-    rank: Rank,
-    suit: Suit,
+    pub rank: Rank,
+    pub suit: Suit,
 }
 
 impl fmt::Display for Card {
@@ -51,8 +50,8 @@ pub struct Pack {
 impl Pack {
     pub fn new() -> Self {
         let mut pack = Pack { cards: Vec::new() };
-        Suit::iter().for_each(|suit|  {
-            Rank::iter().for_each(|rank| {pack.cards.push(Card{rank, suit})});
+        Suit::iter().for_each(|suit| {
+            Rank::iter().for_each(|rank| { pack.cards.push(Card { rank, suit }) });
         });
         pack
     }

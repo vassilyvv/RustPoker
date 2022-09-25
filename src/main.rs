@@ -1,7 +1,5 @@
 mod game;
 use game::Pack;
-use rand::thread_rng;
-use rand::seq::SliceRandom;
 
 #[macro_use] extern crate rocket;
 

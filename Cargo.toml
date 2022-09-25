@@ -1,5 +1,5 @@
 [package]
-name = "RustPoker"
+name = "rust_poker"
 version = "0.1.0"
 edition = "2021"
 
